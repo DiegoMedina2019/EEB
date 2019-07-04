@@ -46,17 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Vistas\Login\InicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Login\InicioSesion.Designer.cs">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Menu Principal\Sesion\CambioContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Menu Principal\Sesion\CambioContraseña.Designer.cs">
+      <DependentUpon>CambioContraseña.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -66,6 +69,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vistas\Login\InicioSesion.resx">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Menu Principal\Sesion\CambioContraseña.resx">
+      <DependentUpon>CambioContraseña.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,6 +88,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

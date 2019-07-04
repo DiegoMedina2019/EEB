@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EEB.Presentacion
+namespace EEB.Presentacion.Vistas.Menu_Principal.Sesion
 {
-    public partial class Form1 : Form
+    public partial class CambioContraseña : Form
     {
-        public Form1()
+        public CambioContraseña()
         {
             InitializeComponent();
         }

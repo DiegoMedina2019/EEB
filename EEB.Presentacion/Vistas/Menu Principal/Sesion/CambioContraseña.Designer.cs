@@ -1,6 +1,6 @@
-﻿namespace EEB.Presentacion
+﻿namespace EEB.Presentacion.Vistas.Menu_Principal.Sesion
 {
-    partial class Form1
+    partial class CambioContraseña
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CambioContraseña));
             this.SuspendLayout();
             // 
-            // Form1
+            // CambioContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(28)))), ((int)(((byte)(12)))));
-            this.ClientSize = new System.Drawing.Size(261, 225);
+            this.ClientSize = new System.Drawing.Size(245, 209);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
             this.Text = "INICIO - SESIÓN";
@@ -46,4 +47,3 @@
         #endregion
     }
 }
-
