@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using EEB.Presentacion.Vistas.Login;
+using EEB.Presentacion.Vistas;
 
 namespace EEB.Presentacion
 {
