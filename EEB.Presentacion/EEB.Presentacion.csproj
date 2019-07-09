@@ -54,6 +54,12 @@
     <Compile Include="Vistas\Login\InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Menu Principal\MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Menu Principal\MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Menu Principal\Sesion\CambioContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,7 +94,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EEB.Dominio\EEB.Dominio.csproj">
+      <Project>{1DADA5CD-ED41-489B-8E26-0731E9047F99}</Project>
+      <Name>EEB.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

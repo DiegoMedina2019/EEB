@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EEB.Dominio;
+using EEB.Presentacion.Vistas.Menu_Principal;
 
 namespace EEB.Presentacion.Vistas
 {
     public partial class InicioSesion : Form
     {
+        private string mensaje = string.Empty;
+        private Usuario user;
+        private MenuPrincipal menuPrincipal;
+
         public InicioSesion()
         {
             InitializeComponent();
+            user = new Usuario();
+            menuPrincipal = new MenuPrincipal();
         }
         bool ValidarTextsBoxes()
         {
@@ -22,16 +30,16 @@ namespace EEB.Presentacion.Vistas
             {
                 if(item.Text == string.Empty || item.Text == null)
                 {
-                    MessageBox.Show("Hay campos sin completar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    item.Focus();
+                    MessageBox.Show("HAY CAMPOS SIN COMPLETAR", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //item.Focus();
                     return false;
                 }
                 for(int i = 0; i < item.Text.Length; i++)
                 {
                     if (char.IsWhiteSpace(item.Text[i]))
                     {
-                        MessageBox.Show("No puede haber espacios en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        item.Focus();
+                        MessageBox.Show("NO PUEDE HABER ESPACIOS EN BLANCO", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //item.Focus();
                         return false;
                     }
                 }
@@ -42,9 +50,31 @@ namespace EEB.Presentacion.Vistas
         {
            if(ValidarTextsBoxes()==true)
            {
-                
+                mensaje = user.Login(txtUsuario.Text, txtContraseña.Text);
+                switch(mensaje)
+                {
+                    case "EXISTE":
+                        this.Hide();
+                        this.ShowInTaskbar = false;
+                        menuPrincipal.ShowDialog();
+                        break;
+                    case "NO EXISTE":
+                        MessageBox.Show("NO EXISTE EL USUARIO, A PESAR DE HABER CARGADO BIEN SU NOMBRE DE USAURIO Y CONTRASEÑA","ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case "NO ESTA CONECTADO A LA BASE DE DATOS":
+                        MessageBox.Show(mensaje,"Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        break;
+                    case "CONTRASEÑA CORRECTA PERO USUARIO INCORRECTO":
+                        MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case "USUARIO CORRECTO PERO CONTRASEÑA INCORRECTA":
+                        MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    case "USUARIO INCORRECTO Y CONTRASEÑA INCORRECTA":
+                        MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                }
            }
-           
         }
 
         private void btnResetear_Click(object sender, EventArgs e)

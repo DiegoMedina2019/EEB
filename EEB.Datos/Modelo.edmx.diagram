@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="021adfa415ab4db5a94e56988f1ee02e" Name="Diagram1">
+        <EntityTypeShape EntityType="eebModel.articulo" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.asistencia" Width="1.5" PointX="8.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.camion" Width="1.5" PointX="9" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.categoria" Width="1.5" PointX="3.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.cliente" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.compra" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.concepto" Width="1.5" PointX="8.25" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.condicion_de_iva" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.deposito" Width="1.5" PointX="8.25" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.empleado" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.grupo_familiar" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.historial_acceso_usuarios" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.linea_de_compra" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.linea_de_ventas" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.liquidacion" Width="1.5" PointX="8.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.localidad" Width="1.5" PointX="3" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.logistica" Width="1.5" PointX="11.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.pago" Width="1.5" PointX="7.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.proveedor" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.provincia" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.punto_de_venta" Width="1.5" PointX="3" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.recordatorio" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.rubro" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.stock_deposito" Width="1.5" PointX="10.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.tanque" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.ubicacion" Width="1.5" PointX="5.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.usuario" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.ventas" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eebModel.linea_de_liquidacion" Width="1.5" PointX="10.5" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="eebModel.fk_ARTICULO_has_DEPOSITO_ARTICULO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_ARTICULO_RUBRO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LINEA_DE_COMPRA_ARTICULO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LINEA_DE_VENTAS_ARTICULO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_TANQUE_ARTICULO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_ASISTENCIA_EMPLEADO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LOGISTICA_CAMION1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_EMPLEADO_CATEGORIA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_CLIENTE_CONDICION_DE_IVA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_CLIENTE_PROVINCIA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_VENTAS_CLIENTE1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_COMPRA_PROVEEDOR1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_COMPRA_USUARIO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LINEA_DE_COMPRA_COMPRA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LINEA_DE_LIQUIDACION_CONCEPTO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_PROVEEDOR_CONDICION_DE_IVA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_ARTICULO_has_DEPOSITO_DEPOSITO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_Empleado_PROVINCIA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_Empleado_USUARIO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_GRUPO_FAMILIAR_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LIQUIDACION_EMPLEADO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LOGISTICA_EMPLEADO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_HISTORIAL_ACCESO_USUARIOS_USUARIO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_VENTAS_LINEA_DE_VENTAS1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LINEA_DE_LIQUIDACION_LIQUIDACION1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LOCALIDAD_PROVINCIA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_UBICACION_LOCALIDAD1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LOGISTICA_PROVINCIA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_LOGISTICA_USUARIO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_VENTAS_LOGISTICA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_PAGO_VENTAS1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_PROVEEDOR_PROVINCIA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_VENTAS_PUNTO_DE_VENTA1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.fk_VENTAS_USUARIO1" ManuallyRouted="false" />
+        <AssociationConnector Association="eebModel.usuario_has_recordatorio" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

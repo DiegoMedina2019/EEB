@@ -1,0 +1,2415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eebModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="articulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_barra" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="precio_unitario" Type="double" Nullable="false" />
+          <Property Name="precio_venta_menor" Type="double" Nullable="false" />
+          <Property Name="precio_venta_mayor" Type="double" Nullable="false" />
+          <Property Name="itc" Type="double" Nullable="false" />
+          <Property Name="th_ti" Type="double" Nullable="false" />
+          <Property Name="iva" Type="double" Nullable="false" />
+          <Property Name="utilidad" Type="double" Nullable="false" />
+          <Property Name="stock_critico_gral" Type="double" Nullable="false" />
+          <Property Name="stock_actual_gral" Type="double" Nullable="false" />
+          <Property Name="fecha_stock_actual" Type="date" Nullable="false" />
+          <Property Name="fecha_registrado" Type="date" Nullable="false" />
+          <Property Name="RUBRO_id_rubro" Type="int" Nullable="false" />
+          <Property Name="granel" Type="bool" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="asistencia">
+          <Key>
+            <PropertyRef Name="id_asistencia" />
+          </Key>
+          <Property Name="id_asistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="hora_entrada" Type="time" Precision="0" Nullable="false" />
+          <Property Name="hora_salida" Type="time" Precision="0" Nullable="false" />
+          <Property Name="imagen" Type="blob" Nullable="false" />
+          <Property Name="EMPLEADO_id_empleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="camion">
+          <Key>
+            <PropertyRef Name="id_Camion" />
+          </Key>
+          <Property Name="id_Camion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="capacidad" Type="int" Nullable="false" />
+          <Property Name="cantidad_cisternas" Type="int" Nullable="false" />
+          <Property Name="patente" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="sindicato" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="convenio_laboral" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="sueldo_basico" Type="double" Nullable="false" />
+          <Property Name="tipo_sueldo" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="razon_social" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombre_contacto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="cuit" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefono_fijo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="celular" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="fecha_registrado" Type="date" Nullable="false" />
+          <Property Name="CONDICION DE IVA_id_condicion_iva" Type="int" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="compra">
+          <Key>
+            <PropertyRef Name="id_compra" />
+          </Key>
+          <Property Name="id_compra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="precio_unitario" Type="double" Nullable="false" />
+          <Property Name="itcCompra" Type="double" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="int" Nullable="false" />
+          <Property Name="PROVEEDOR_id_proveedor" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="concepto">
+          <Key>
+            <PropertyRef Name="id_concepto" />
+          </Key>
+          <Property Name="id_concepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_concepto" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="importe" Type="double" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="condicion de iva">
+          <Key>
+            <PropertyRef Name="id_condicion_iva" />
+          </Key>
+          <Property Name="id_condicion_iva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripción" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="deposito">
+          <Key>
+            <PropertyRef Name="id_deposito" />
+          </Key>
+          <Property Name="id_deposito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fecha_registro" Type="date" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="id_empleado" />
+          </Key>
+          <Property Name="id_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="legajo" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cargo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="dni" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="cuil" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="sexo" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="telefono_fijo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="celular" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="date" Nullable="false" />
+          <Property Name="fecha_egreso" Type="date" Nullable="false" />
+          <Property Name="fecha_registrado" Type="date" Nullable="false" />
+          <Property Name="obra_social" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="int" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="int" Nullable="false" />
+          <Property Name="CATEGORIA_id_categoria" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grupo-familiar">
+          <Key>
+            <PropertyRef Name="id_grupo_familiar" />
+          </Key>
+          <Property Name="id_grupo_familiar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="parentesco" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+          <Property Name="dni" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="fecha_registrado" Type="date" Nullable="false" />
+          <Property Name="Empleado_id_empleado" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="historial-acceso-usuarios">
+          <Key>
+            <PropertyRef Name="id_historial_acceso_usario" />
+          </Key>
+          <Property Name="id_historial_acceso_usario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="hora_ingreso" Type="time" Precision="0" Nullable="false" />
+          <Property Name="hora_salida" Type="time" Precision="0" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="linea de compra">
+          <Key>
+            <PropertyRef Name="id_linea_caja" />
+          </Key>
+          <Property Name="id_linea_caja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="precio_compra" Type="double" Nullable="false" />
+          <Property Name="itcCompra" Type="double" Nullable="false" />
+          <Property Name="COMPRA_id_compra" Type="int" Nullable="false" />
+          <Property Name="ARTICULO_id_articulo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eeb.linea de liquidacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="linea de liquidacion">
+          <Key>
+            <PropertyRef Name="cantidad_concepto" />
+            <PropertyRef Name="importe_concepto" />
+            <PropertyRef Name="LIQUIDACION_id_liquidacion" />
+            <PropertyRef Name="CONCEPTO_id_concepto" />
+          </Key>
+          <Property Name="cantidad_concepto" Type="double" Nullable="false" />
+          <Property Name="importe_concepto" Type="double" Nullable="false" />
+          <Property Name="LIQUIDACION_id_liquidacion" Type="int" Nullable="false" />
+          <Property Name="CONCEPTO_id_concepto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="linea de ventas">
+          <Key>
+            <PropertyRef Name="id_linea_ventas" />
+          </Key>
+          <Property Name="id_linea_ventas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="precio_vta" Type="double" Nullable="false" />
+          <Property Name="itcVenta" Type="double" Nullable="false" />
+          <Property Name="th_tiVenta" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ARTICULO_id_articulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="liquidacion">
+          <Key>
+            <PropertyRef Name="id_liquidacion" />
+          </Key>
+          <Property Name="id_liquidacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fecha_liquidación" Type="date" Nullable="false" />
+          <Property Name="fecha_pago" Type="date" Nullable="false" />
+          <Property Name="lugar_de_pago" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="EMPLEADO_id_empleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="localidad">
+          <Key>
+            <PropertyRef Name="id_localidad" />
+          </Key>
+          <Property Name="id_localidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_postal" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="logistica">
+          <Key>
+            <PropertyRef Name="id_logistica" />
+          </Key>
+          <Property Name="id_logistica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_entrega" Type="date" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CAMION_id_Camion" Type="int" Nullable="false" />
+          <Property Name="EMPLEADO_id_empleado" Type="int" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="int" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pago">
+          <Key>
+            <PropertyRef Name="id_pago" />
+          </Key>
+          <Property Name="id_pago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nro_comprobante" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="fecha_pago" Type="date" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="monto" Type="double" Nullable="false" />
+          <Property Name="observaciones" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="VENTAS_id_venta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cuit" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="razon_social" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombre_contacto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="telefono_fijo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="celular" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fecha_registro" Type="date" Nullable="false" />
+          <Property Name="CONDICION DE IVA_id_condicion_iva" Type="int" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="punto de venta">
+          <Key>
+            <PropertyRef Name="id_punto_venta" />
+          </Key>
+          <Property Name="id_punto_venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nro_PtoVta" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="maquina" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recordatorio">
+          <Key>
+            <PropertyRef Name="id_funcion" />
+          </Key>
+          <Property Name="id_funcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="rubro">
+          <Key>
+            <PropertyRef Name="id_rubro" />
+          </Key>
+          <Property Name="id_rubro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="fecha_registro" Type="date" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stock_deposito">
+          <Key>
+            <PropertyRef Name="ARTICULO_id_articulo" />
+            <PropertyRef Name="DEPOSITO_id_deposito" />
+          </Key>
+          <Property Name="ARTICULO_id_articulo" Type="int" Nullable="false" />
+          <Property Name="DEPOSITO_id_deposito" Type="int" Nullable="false" />
+          <Property Name="stock_actual" Type="double" Nullable="false" />
+          <Property Name="fecha_stock_actual" Type="date" Nullable="false" />
+          <Property Name="stock_critico" Type="double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tanque">
+          <Key>
+            <PropertyRef Name="id_tanque" />
+          </Key>
+          <Property Name="id_tanque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="capacidad" Type="double" Nullable="false" />
+          <Property Name="stock_critico" Type="double" Nullable="false" />
+          <Property Name="stock_actual" Type="double" Nullable="false" />
+          <Property Name="fecha_stock_actual" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="stock_medicion" Type="double" Nullable="false" />
+          <Property Name="fecha_medicion" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="ARTICULO_id_articulo" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubicacion">
+          <Key>
+            <PropertyRef Name="id_ubicacion" />
+          </Key>
+          <Property Name="id_ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="casa" Type="int" Nullable="false" />
+          <Property Name="manzana" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="calle" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="barrio" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="sector" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="zona" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="departamento" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="piso" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LOCALIDAD_id_localidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_usario" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="contraseña" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="perfil" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario_has_recordatorio">
+          <Key>
+            <PropertyRef Name="USUARIO_id_usuario" />
+            <PropertyRef Name="RECORDATORIO_id_funcion" />
+          </Key>
+          <Property Name="USUARIO_id_usuario" Type="int" Nullable="false" />
+          <Property Name="RECORDATORIO_id_funcion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ventas">
+          <Key>
+            <PropertyRef Name="id_venta" />
+          </Key>
+          <Property Name="id_venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="tipo_comp" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="numero_comp" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PUNTO DE VENTA_id_punto_venta" Type="int" Nullable="false" />
+          <Property Name="CLIENTE_id_cliente" Type="int" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="int" Nullable="false" />
+          <Property Name="LINEA DE VENTAS_id_linea_ventas" Type="int" Nullable="false" />
+          <Property Name="LOGISTICA_id_logistica" Type="int" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_ARTICULO_has_DEPOSITO_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="stock_deposito" Type="Self.stock_deposito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="stock_deposito">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ARTICULO_has_DEPOSITO_DEPOSITO1">
+          <End Role="deposito" Type="Self.deposito" Multiplicity="1" />
+          <End Role="stock_deposito" Type="Self.stock_deposito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deposito">
+              <PropertyRef Name="id_deposito" />
+            </Principal>
+            <Dependent Role="stock_deposito">
+              <PropertyRef Name="DEPOSITO_id_deposito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ARTICULO_RUBRO1">
+          <End Role="rubro" Type="Self.rubro" Multiplicity="1" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rubro">
+              <PropertyRef Name="id_rubro" />
+            </Principal>
+            <Dependent Role="articulo">
+              <PropertyRef Name="RUBRO_id_rubro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ASISTENCIA_EMPLEADO1">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="asistencia" Type="Self.asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="asistencia">
+              <PropertyRef Name="EMPLEADO_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTE_CONDICION DE IVA1">
+          <End Role="condicion de iva" Type="Self.condicion de iva" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condicion de iva">
+              <PropertyRef Name="id_condicion_iva" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="CONDICION DE IVA_id_condicion_iva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTE_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_COMPRA_PROVEEDOR1">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="PROVEEDOR_id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_COMPRA_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EMPLEADO_CATEGORIA1">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="CATEGORIA_id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Empleado_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Empleado_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_GRUPO-FAMILIAR_Empleado">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="grupo-familiar" Type="Self.grupo-familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="grupo-familiar">
+              <PropertyRef Name="Empleado_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HISTORIAL-ACCESO-USUARIOS_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="historial-acceso-usuarios" Type="Self.historial-acceso-usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="historial-acceso-usuarios">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA DE COMPRA_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="linea de compra" Type="Self.linea de compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="linea de compra">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA DE COMPRA_COMPRA1">
+          <End Role="compra" Type="Self.compra" Multiplicity="1" />
+          <End Role="linea de compra" Type="Self.linea de compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id_compra" />
+            </Principal>
+            <Dependent Role="linea de compra">
+              <PropertyRef Name="COMPRA_id_compra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA DE LIQUIDACION_CONCEPTO1">
+          <End Role="concepto" Type="Self.concepto" Multiplicity="1" />
+          <End Role="linea de liquidacion" Type="Self.linea de liquidacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="concepto">
+              <PropertyRef Name="id_concepto" />
+            </Principal>
+            <Dependent Role="linea de liquidacion">
+              <PropertyRef Name="CONCEPTO_id_concepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA DE LIQUIDACION_LIQUIDACION1">
+          <End Role="liquidacion" Type="Self.liquidacion" Multiplicity="1" />
+          <End Role="linea de liquidacion" Type="Self.linea de liquidacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="liquidacion">
+              <PropertyRef Name="id_liquidacion" />
+            </Principal>
+            <Dependent Role="linea de liquidacion">
+              <PropertyRef Name="LIQUIDACION_id_liquidacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA DE VENTAS_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="linea de ventas" Type="Self.linea de ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="linea de ventas">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LIQUIDACION_EMPLEADO1">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="liquidacion" Type="Self.liquidacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="liquidacion">
+              <PropertyRef Name="EMPLEADO_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOCALIDAD_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="localidad" Type="Self.localidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="localidad">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_CAMION1">
+          <End Role="camion" Type="Self.camion" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="camion">
+              <PropertyRef Name="id_Camion" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="CAMION_id_Camion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_EMPLEADO1">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="EMPLEADO_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAGO_VENTAS1">
+          <End Role="ventas" Type="Self.ventas" Multiplicity="1" />
+          <End Role="pago" Type="Self.pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ventas">
+              <PropertyRef Name="id_venta" />
+            </Principal>
+            <Dependent Role="pago">
+              <PropertyRef Name="VENTAS_id_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PROVEEDOR_CONDICION DE IVA1">
+          <End Role="condicion de iva" Type="Self.condicion de iva" Multiplicity="1" />
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condicion de iva">
+              <PropertyRef Name="id_condicion_iva" />
+            </Principal>
+            <Dependent Role="proveedor">
+              <PropertyRef Name="CONDICION DE IVA_id_condicion_iva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PROVEEDOR_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="proveedor">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TANQUE_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="tanque" Type="Self.tanque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="tanque">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UBICACION_LOCALIDAD1">
+          <End Role="localidad" Type="Self.localidad" Multiplicity="1" />
+          <End Role="ubicacion" Type="Self.ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidad">
+              <PropertyRef Name="id_localidad" />
+            </Principal>
+            <Dependent Role="ubicacion">
+              <PropertyRef Name="LOCALIDAD_id_localidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USUARIO_has_RECORDATORIO_RECORDATORIO1">
+          <End Role="recordatorio" Type="Self.recordatorio" Multiplicity="1" />
+          <End Role="usuario_has_recordatorio" Type="Self.usuario_has_recordatorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recordatorio">
+              <PropertyRef Name="id_funcion" />
+            </Principal>
+            <Dependent Role="usuario_has_recordatorio">
+              <PropertyRef Name="RECORDATORIO_id_funcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_USUARIO_has_RECORDATORIO_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="usuario_has_recordatorio" Type="Self.usuario_has_recordatorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="usuario_has_recordatorio">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_CLIENTE1">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="CLIENTE_id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_LINEA DE VENTAS1">
+          <End Role="linea de ventas" Type="Self.linea de ventas" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="linea de ventas">
+              <PropertyRef Name="id_linea_ventas" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="LINEA DE VENTAS_id_linea_ventas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_LOGISTICA1">
+          <End Role="logistica" Type="Self.logistica" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="logistica">
+              <PropertyRef Name="id_logistica" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="LOGISTICA_id_logistica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_PUNTO DE VENTA1">
+          <End Role="punto de venta" Type="Self.punto de venta" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="punto de venta">
+              <PropertyRef Name="id_punto_venta" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="PUNTO DE VENTA_id_punto_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eebModelStoreContainer">
+          <EntitySet Name="articulo" EntityType="Self.articulo" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="asistencia" EntityType="Self.asistencia" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="camion" EntityType="Self.camion" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="compra" EntityType="Self.compra" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="concepto" EntityType="Self.concepto" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="condicion de iva" EntityType="Self.condicion de iva" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="deposito" EntityType="Self.deposito" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="empleado" EntityType="Self.empleado" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="grupo-familiar" EntityType="Self.grupo-familiar" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="historial-acceso-usuarios" EntityType="Self.historial-acceso-usuarios" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="linea de compra" EntityType="Self.linea de compra" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="linea de ventas" EntityType="Self.linea de ventas" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="liquidacion" EntityType="Self.liquidacion" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="localidad" EntityType="Self.localidad" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="logistica" EntityType="Self.logistica" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="pago" EntityType="Self.pago" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="punto de venta" EntityType="Self.punto de venta" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="recordatorio" EntityType="Self.recordatorio" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="rubro" EntityType="Self.rubro" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="stock_deposito" EntityType="Self.stock_deposito" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="tanque" EntityType="Self.tanque" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="ubicacion" EntityType="Self.ubicacion" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="usuario_has_recordatorio" EntityType="Self.usuario_has_recordatorio" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="ventas" EntityType="Self.ventas" Schema="eeb" store:Type="Tables" />
+          <EntitySet Name="linea de liquidacion" EntityType="Self.linea de liquidacion" store:Type="Tables" store:Schema="eeb">
+            <DefiningQuery>SELECT
+`linea de liquidacion`.`cantidad_concepto`, 
+`linea de liquidacion`.`importe_concepto`, 
+`linea de liquidacion`.`LIQUIDACION_id_liquidacion`, 
+`linea de liquidacion`.`CONCEPTO_id_concepto`
+FROM `linea de liquidacion` AS `linea de liquidacion`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_ARTICULO_has_DEPOSITO_ARTICULO1" Association="Self.fk_ARTICULO_has_DEPOSITO_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="stock_deposito" EntitySet="stock_deposito" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ARTICULO_has_DEPOSITO_DEPOSITO1" Association="Self.fk_ARTICULO_has_DEPOSITO_DEPOSITO1">
+            <End Role="deposito" EntitySet="deposito" />
+            <End Role="stock_deposito" EntitySet="stock_deposito" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ARTICULO_RUBRO1" Association="Self.fk_ARTICULO_RUBRO1">
+            <End Role="rubro" EntitySet="rubro" />
+            <End Role="articulo" EntitySet="articulo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ASISTENCIA_EMPLEADO1" Association="Self.fk_ASISTENCIA_EMPLEADO1">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="asistencia" EntitySet="asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTE_CONDICION DE IVA1" Association="Self.fk_CLIENTE_CONDICION DE IVA1">
+            <End Role="condicion de iva" EntitySet="condicion de iva" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTE_PROVINCIA1" Association="Self.fk_CLIENTE_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_COMPRA_PROVEEDOR1" Association="Self.fk_COMPRA_PROVEEDOR1">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_COMPRA_USUARIO1" Association="Self.fk_COMPRA_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EMPLEADO_CATEGORIA1" Association="Self.fk_EMPLEADO_CATEGORIA1">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Empleado_PROVINCIA1" Association="Self.fk_Empleado_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Empleado_USUARIO1" Association="Self.fk_Empleado_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_GRUPO-FAMILIAR_Empleado" Association="Self.fk_GRUPO-FAMILIAR_Empleado">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="grupo-familiar" EntitySet="grupo-familiar" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HISTORIAL-ACCESO-USUARIOS_USUARIO1" Association="Self.fk_HISTORIAL-ACCESO-USUARIOS_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="historial-acceso-usuarios" EntitySet="historial-acceso-usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA DE COMPRA_ARTICULO1" Association="Self.fk_LINEA DE COMPRA_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="linea de compra" EntitySet="linea de compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA DE COMPRA_COMPRA1" Association="Self.fk_LINEA DE COMPRA_COMPRA1">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="linea de compra" EntitySet="linea de compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA DE LIQUIDACION_CONCEPTO1" Association="Self.fk_LINEA DE LIQUIDACION_CONCEPTO1">
+            <End Role="concepto" EntitySet="concepto" />
+            <End Role="linea de liquidacion" EntitySet="linea de liquidacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA DE LIQUIDACION_LIQUIDACION1" Association="Self.fk_LINEA DE LIQUIDACION_LIQUIDACION1">
+            <End Role="liquidacion" EntitySet="liquidacion" />
+            <End Role="linea de liquidacion" EntitySet="linea de liquidacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA DE VENTAS_ARTICULO1" Association="Self.fk_LINEA DE VENTAS_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="linea de ventas" EntitySet="linea de ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LIQUIDACION_EMPLEADO1" Association="Self.fk_LIQUIDACION_EMPLEADO1">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="liquidacion" EntitySet="liquidacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOCALIDAD_PROVINCIA1" Association="Self.fk_LOCALIDAD_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="localidad" EntitySet="localidad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_CAMION1" Association="Self.fk_LOGISTICA_CAMION1">
+            <End Role="camion" EntitySet="camion" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_EMPLEADO1" Association="Self.fk_LOGISTICA_EMPLEADO1">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_PROVINCIA1" Association="Self.fk_LOGISTICA_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_USUARIO1" Association="Self.fk_LOGISTICA_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAGO_VENTAS1" Association="Self.fk_PAGO_VENTAS1">
+            <End Role="ventas" EntitySet="ventas" />
+            <End Role="pago" EntitySet="pago" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PROVEEDOR_CONDICION DE IVA1" Association="Self.fk_PROVEEDOR_CONDICION DE IVA1">
+            <End Role="condicion de iva" EntitySet="condicion de iva" />
+            <End Role="proveedor" EntitySet="proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PROVEEDOR_PROVINCIA1" Association="Self.fk_PROVEEDOR_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="proveedor" EntitySet="proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TANQUE_ARTICULO1" Association="Self.fk_TANQUE_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="tanque" EntitySet="tanque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UBICACION_LOCALIDAD1" Association="Self.fk_UBICACION_LOCALIDAD1">
+            <End Role="localidad" EntitySet="localidad" />
+            <End Role="ubicacion" EntitySet="ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USUARIO_has_RECORDATORIO_RECORDATORIO1" Association="Self.fk_USUARIO_has_RECORDATORIO_RECORDATORIO1">
+            <End Role="recordatorio" EntitySet="recordatorio" />
+            <End Role="usuario_has_recordatorio" EntitySet="usuario_has_recordatorio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_USUARIO_has_RECORDATORIO_USUARIO1" Association="Self.fk_USUARIO_has_RECORDATORIO_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="usuario_has_recordatorio" EntitySet="usuario_has_recordatorio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_CLIENTE1" Association="Self.fk_VENTAS_CLIENTE1">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_LINEA DE VENTAS1" Association="Self.fk_VENTAS_LINEA DE VENTAS1">
+            <End Role="linea de ventas" EntitySet="linea de ventas" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_LOGISTICA1" Association="Self.fk_VENTAS_LOGISTICA1">
+            <End Role="logistica" EntitySet="logistica" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_PUNTO DE VENTA1" Association="Self.fk_VENTAS_PUNTO DE VENTA1">
+            <End Role="punto de venta" EntitySet="punto de venta" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_USUARIO1" Association="Self.fk_VENTAS_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="articulo">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+          </Key>
+          <Property Name="id_articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_barra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio_unitario" Type="Double" Nullable="false" />
+          <Property Name="precio_venta_menor" Type="Double" Nullable="false" />
+          <Property Name="precio_venta_mayor" Type="Double" Nullable="false" />
+          <Property Name="itc" Type="Double" Nullable="false" />
+          <Property Name="th_ti" Type="Double" Nullable="false" />
+          <Property Name="iva" Type="Double" Nullable="false" />
+          <Property Name="utilidad" Type="Double" Nullable="false" />
+          <Property Name="stock_critico_gral" Type="Double" Nullable="false" />
+          <Property Name="stock_actual_gral" Type="Double" Nullable="false" />
+          <Property Name="fecha_stock_actual" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_registrado" Type="DateTime" Nullable="false" />
+          <Property Name="RUBRO_id_rubro" Type="Int32" Nullable="false" />
+          <Property Name="granel" Type="Boolean" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="stock_deposito" Relationship="Self.fk_ARTICULO_has_DEPOSITO_ARTICULO1" FromRole="articulo" ToRole="stock_deposito" />
+          <NavigationProperty Name="rubro" Relationship="Self.fk_ARTICULO_RUBRO1" FromRole="articulo" ToRole="rubro" />
+          <NavigationProperty Name="linea_de_compra" Relationship="Self.fk_LINEA_DE_COMPRA_ARTICULO1" FromRole="articulo" ToRole="linea_de_compra" />
+          <NavigationProperty Name="linea_de_ventas" Relationship="Self.fk_LINEA_DE_VENTAS_ARTICULO1" FromRole="articulo" ToRole="linea_de_ventas" />
+          <NavigationProperty Name="tanque" Relationship="Self.fk_TANQUE_ARTICULO1" FromRole="articulo" ToRole="tanque" />
+        </EntityType>
+        <EntityType Name="asistencia">
+          <Key>
+            <PropertyRef Name="id_asistencia" />
+          </Key>
+          <Property Name="id_asistencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="hora_entrada" Type="Time" Nullable="false" />
+          <Property Name="hora_salida" Type="Time" Nullable="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="EMPLEADO_id_empleado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="empleado" Relationship="Self.fk_ASISTENCIA_EMPLEADO1" FromRole="asistencia" ToRole="empleado" />
+        </EntityType>
+        <EntityType Name="camion">
+          <Key>
+            <PropertyRef Name="id_Camion" />
+          </Key>
+          <Property Name="id_Camion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="capacidad" Type="Int32" Nullable="false" />
+          <Property Name="cantidad_cisternas" Type="Int32" Nullable="false" />
+          <Property Name="patente" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="logistica" Relationship="Self.fk_LOGISTICA_CAMION1" FromRole="camion" ToRole="logistica" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sindicato" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="convenio_laboral" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sueldo_basico" Type="Double" Nullable="false" />
+          <Property Name="tipo_sueldo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="empleado" Relationship="Self.fk_EMPLEADO_CATEGORIA1" FromRole="categoria" ToRole="empleado" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="razon_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre_contacto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cuit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_fijo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="celular" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_registrado" Type="DateTime" Nullable="false" />
+          <Property Name="CONDICION_DE_IVA_id_condicion_iva" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="condicion_de_iva" Relationship="Self.fk_CLIENTE_CONDICION_DE_IVA1" FromRole="cliente" ToRole="condicion_de_iva" />
+          <NavigationProperty Name="provincia" Relationship="Self.fk_CLIENTE_PROVINCIA1" FromRole="cliente" ToRole="provincia" />
+          <NavigationProperty Name="ventas" Relationship="Self.fk_VENTAS_CLIENTE1" FromRole="cliente" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="compra">
+          <Key>
+            <PropertyRef Name="id_compra" />
+          </Key>
+          <Property Name="id_compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="precio_unitario" Type="Double" Nullable="false" />
+          <Property Name="itcCompra" Type="Double" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="PROVEEDOR_id_proveedor" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="proveedor" Relationship="Self.fk_COMPRA_PROVEEDOR1" FromRole="compra" ToRole="proveedor" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_COMPRA_USUARIO1" FromRole="compra" ToRole="usuario" />
+          <NavigationProperty Name="linea_de_compra" Relationship="Self.fk_LINEA_DE_COMPRA_COMPRA1" FromRole="compra" ToRole="linea_de_compra" />
+        </EntityType>
+        <EntityType Name="concepto">
+          <Key>
+            <PropertyRef Name="id_concepto" />
+          </Key>
+          <Property Name="id_concepto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_concepto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="importe" Type="Double" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="linea_de_liquidacion" Relationship="Self.fk_LINEA_DE_LIQUIDACION_CONCEPTO1" FromRole="concepto" ToRole="linea_de_liquidacion" />
+        </EntityType>
+        <EntityType Name="condicion_de_iva">
+          <Key>
+            <PropertyRef Name="id_condicion_iva" />
+          </Key>
+          <Property Name="id_condicion_iva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripción" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cliente" Relationship="Self.fk_CLIENTE_CONDICION_DE_IVA1" FromRole="condicion_de_iva" ToRole="cliente" />
+          <NavigationProperty Name="proveedor" Relationship="Self.fk_PROVEEDOR_CONDICION_DE_IVA1" FromRole="condicion_de_iva" ToRole="proveedor" />
+        </EntityType>
+        <EntityType Name="deposito">
+          <Key>
+            <PropertyRef Name="id_deposito" />
+          </Key>
+          <Property Name="id_deposito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="stock_deposito" Relationship="Self.fk_ARTICULO_has_DEPOSITO_DEPOSITO1" FromRole="deposito" ToRole="stock_deposito" />
+        </EntityType>
+        <EntityType Name="empleado">
+          <Key>
+            <PropertyRef Name="id_empleado" />
+          </Key>
+          <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="legajo" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cargo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cuil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_fijo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="celular" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_egreso" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_registrado" Type="DateTime" Nullable="false" />
+          <Property Name="obra_social" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="Int32" Nullable="false" />
+          <Property Name="CATEGORIA_id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="asistencia" Relationship="Self.fk_ASISTENCIA_EMPLEADO1" FromRole="empleado" ToRole="asistencia" />
+          <NavigationProperty Name="categoria" Relationship="Self.fk_EMPLEADO_CATEGORIA1" FromRole="empleado" ToRole="categoria" />
+          <NavigationProperty Name="provincia" Relationship="Self.fk_Empleado_PROVINCIA1" FromRole="empleado" ToRole="provincia" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_Empleado_USUARIO1" FromRole="empleado" ToRole="usuario" />
+          <NavigationProperty Name="grupo_familiar" Relationship="Self.fk_GRUPO_FAMILIAR_Empleado" FromRole="empleado" ToRole="grupo_familiar" />
+          <NavigationProperty Name="liquidacion" Relationship="Self.fk_LIQUIDACION_EMPLEADO1" FromRole="empleado" ToRole="liquidacion" />
+          <NavigationProperty Name="logistica" Relationship="Self.fk_LOGISTICA_EMPLEADO1" FromRole="empleado" ToRole="logistica" />
+        </EntityType>
+        <EntityType Name="grupo_familiar">
+          <Key>
+            <PropertyRef Name="id_grupo_familiar" />
+          </Key>
+          <Property Name="id_grupo_familiar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parentesco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
+          <Property Name="dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_registrado" Type="DateTime" Nullable="false" />
+          <Property Name="Empleado_id_empleado" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="empleado" Relationship="Self.fk_GRUPO_FAMILIAR_Empleado" FromRole="grupo_familiar" ToRole="empleado" />
+        </EntityType>
+        <EntityType Name="historial_acceso_usuarios">
+          <Key>
+            <PropertyRef Name="id_historial_acceso_usario" />
+          </Key>
+          <Property Name="id_historial_acceso_usario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="hora_ingreso" Type="Time" Nullable="false" />
+          <Property Name="hora_salida" Type="Time" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_HISTORIAL_ACCESO_USUARIOS_USUARIO1" FromRole="historial_acceso_usuarios" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="linea_de_compra">
+          <Key>
+            <PropertyRef Name="id_linea_caja" />
+          </Key>
+          <Property Name="id_linea_caja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="precio_compra" Type="Double" Nullable="false" />
+          <Property Name="itcCompra" Type="Double" Nullable="false" />
+          <Property Name="COMPRA_id_compra" Type="Int32" Nullable="false" />
+          <Property Name="ARTICULO_id_articulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Self.fk_LINEA_DE_COMPRA_ARTICULO1" FromRole="linea_de_compra" ToRole="articulo" />
+          <NavigationProperty Name="compra" Relationship="Self.fk_LINEA_DE_COMPRA_COMPRA1" FromRole="linea_de_compra" ToRole="compra" />
+        </EntityType>
+        <EntityType Name="linea_de_ventas">
+          <Key>
+            <PropertyRef Name="id_linea_ventas" />
+          </Key>
+          <Property Name="id_linea_ventas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="precio_vta" Type="Double" Nullable="false" />
+          <Property Name="itcVenta" Type="Double" Nullable="false" />
+          <Property Name="th_tiVenta" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARTICULO_id_articulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Self.fk_LINEA_DE_VENTAS_ARTICULO1" FromRole="linea_de_ventas" ToRole="articulo" />
+          <NavigationProperty Name="ventas" Relationship="Self.fk_VENTAS_LINEA_DE_VENTAS1" FromRole="linea_de_ventas" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="liquidacion">
+          <Key>
+            <PropertyRef Name="id_liquidacion" />
+          </Key>
+          <Property Name="id_liquidacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="periodo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_liquidación" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_pago" Type="DateTime" Nullable="false" />
+          <Property Name="lugar_de_pago" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLEADO_id_empleado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="empleado" Relationship="Self.fk_LIQUIDACION_EMPLEADO1" FromRole="liquidacion" ToRole="empleado" />
+          <NavigationProperty Name="linea_de_liquidacion" Relationship="Self.fk_LINEA_DE_LIQUIDACION_LIQUIDACION1" FromRole="liquidacion" ToRole="linea_de_liquidacion" />
+        </EntityType>
+        <EntityType Name="localidad">
+          <Key>
+            <PropertyRef Name="id_localidad" />
+          </Key>
+          <Property Name="id_localidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_postal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="provincia" Relationship="Self.fk_LOCALIDAD_PROVINCIA1" FromRole="localidad" ToRole="provincia" />
+          <NavigationProperty Name="ubicacion" Relationship="Self.fk_UBICACION_LOCALIDAD1" FromRole="localidad" ToRole="ubicacion" />
+        </EntityType>
+        <EntityType Name="logistica">
+          <Key>
+            <PropertyRef Name="id_logistica" />
+          </Key>
+          <Property Name="id_logistica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_entrega" Type="DateTime" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CAMION_id_Camion" Type="Int32" Nullable="false" />
+          <Property Name="EMPLEADO_id_empleado" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="camion" Relationship="Self.fk_LOGISTICA_CAMION1" FromRole="logistica" ToRole="camion" />
+          <NavigationProperty Name="empleado" Relationship="Self.fk_LOGISTICA_EMPLEADO1" FromRole="logistica" ToRole="empleado" />
+          <NavigationProperty Name="provincia" Relationship="Self.fk_LOGISTICA_PROVINCIA1" FromRole="logistica" ToRole="provincia" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_LOGISTICA_USUARIO1" FromRole="logistica" ToRole="usuario" />
+          <NavigationProperty Name="ventas" Relationship="Self.fk_VENTAS_LOGISTICA1" FromRole="logistica" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="pago">
+          <Key>
+            <PropertyRef Name="id_pago" />
+          </Key>
+          <Property Name="id_pago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nro_comprobante" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_pago" Type="DateTime" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="monto" Type="Double" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VENTAS_id_venta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ventas" Relationship="Self.fk_PAGO_VENTAS1" FromRole="pago" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cuit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="razon_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre_contacto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_fijo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="celular" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" />
+          <Property Name="CONDICION_DE_IVA_id_condicion_iva" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCIA_id_provincia" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="compra" Relationship="Self.fk_COMPRA_PROVEEDOR1" FromRole="proveedor" ToRole="compra" />
+          <NavigationProperty Name="condicion_de_iva" Relationship="Self.fk_PROVEEDOR_CONDICION_DE_IVA1" FromRole="proveedor" ToRole="condicion_de_iva" />
+          <NavigationProperty Name="provincia" Relationship="Self.fk_PROVEEDOR_PROVINCIA1" FromRole="proveedor" ToRole="provincia" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cliente" Relationship="Self.fk_CLIENTE_PROVINCIA1" FromRole="provincia" ToRole="cliente" />
+          <NavigationProperty Name="empleado" Relationship="Self.fk_Empleado_PROVINCIA1" FromRole="provincia" ToRole="empleado" />
+          <NavigationProperty Name="localidad" Relationship="Self.fk_LOCALIDAD_PROVINCIA1" FromRole="provincia" ToRole="localidad" />
+          <NavigationProperty Name="logistica" Relationship="Self.fk_LOGISTICA_PROVINCIA1" FromRole="provincia" ToRole="logistica" />
+          <NavigationProperty Name="proveedor" Relationship="Self.fk_PROVEEDOR_PROVINCIA1" FromRole="provincia" ToRole="proveedor" />
+        </EntityType>
+        <EntityType Name="punto_de_venta">
+          <Key>
+            <PropertyRef Name="id_punto_venta" />
+          </Key>
+          <Property Name="id_punto_venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nro_PtoVta" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="maquina" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ventas" Relationship="Self.fk_VENTAS_PUNTO_DE_VENTA1" FromRole="punto_de_venta" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="recordatorio">
+          <Key>
+            <PropertyRef Name="id_funcion" />
+          </Key>
+          <Property Name="id_funcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.usuario_has_recordatorio" FromRole="recordatorio" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="rubro">
+          <Key>
+            <PropertyRef Name="id_rubro" />
+          </Key>
+          <Property Name="id_rubro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Self.fk_ARTICULO_RUBRO1" FromRole="rubro" ToRole="articulo" />
+        </EntityType>
+        <EntityType Name="stock_deposito">
+          <Key>
+            <PropertyRef Name="ARTICULO_id_articulo" />
+            <PropertyRef Name="DEPOSITO_id_deposito" />
+          </Key>
+          <Property Name="ARTICULO_id_articulo" Type="Int32" Nullable="false" />
+          <Property Name="DEPOSITO_id_deposito" Type="Int32" Nullable="false" />
+          <Property Name="stock_actual" Type="Double" Nullable="false" />
+          <Property Name="fecha_stock_actual" Type="DateTime" Nullable="false" />
+          <Property Name="stock_critico" Type="Double" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Self.fk_ARTICULO_has_DEPOSITO_ARTICULO1" FromRole="stock_deposito" ToRole="articulo" />
+          <NavigationProperty Name="deposito" Relationship="Self.fk_ARTICULO_has_DEPOSITO_DEPOSITO1" FromRole="stock_deposito" ToRole="deposito" />
+        </EntityType>
+        <EntityType Name="tanque">
+          <Key>
+            <PropertyRef Name="id_tanque" />
+          </Key>
+          <Property Name="id_tanque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="capacidad" Type="Double" Nullable="false" />
+          <Property Name="stock_critico" Type="Double" Nullable="false" />
+          <Property Name="stock_actual" Type="Double" Nullable="false" />
+          <Property Name="fecha_stock_actual" Type="DateTime" Nullable="false" />
+          <Property Name="stock_medicion" Type="Double" Nullable="false" />
+          <Property Name="fecha_medicion" Type="DateTime" Nullable="false" />
+          <Property Name="ARTICULO_id_articulo" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Self.fk_TANQUE_ARTICULO1" FromRole="tanque" ToRole="articulo" />
+        </EntityType>
+        <EntityType Name="ubicacion">
+          <Key>
+            <PropertyRef Name="id_ubicacion" />
+          </Key>
+          <Property Name="id_ubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="casa" Type="Int32" Nullable="false" />
+          <Property Name="manzana" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="calle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="barrio" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zona" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="piso" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LOCALIDAD_id_localidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="localidad" Relationship="Self.fk_UBICACION_LOCALIDAD1" FromRole="ubicacion" ToRole="localidad" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_usario" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="perfil" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="compra" Relationship="Self.fk_COMPRA_USUARIO1" FromRole="usuario" ToRole="compra" />
+          <NavigationProperty Name="empleado" Relationship="Self.fk_Empleado_USUARIO1" FromRole="usuario" ToRole="empleado" />
+          <NavigationProperty Name="historial_acceso_usuarios" Relationship="Self.fk_HISTORIAL_ACCESO_USUARIOS_USUARIO1" FromRole="usuario" ToRole="historial_acceso_usuarios" />
+          <NavigationProperty Name="logistica" Relationship="Self.fk_LOGISTICA_USUARIO1" FromRole="usuario" ToRole="logistica" />
+          <NavigationProperty Name="ventas" Relationship="Self.fk_VENTAS_USUARIO1" FromRole="usuario" ToRole="ventas" />
+          <NavigationProperty Name="recordatorio" Relationship="Self.usuario_has_recordatorio" FromRole="usuario" ToRole="recordatorio" />
+        </EntityType>
+        <EntityType Name="ventas">
+          <Key>
+            <PropertyRef Name="id_venta" />
+          </Key>
+          <Property Name="id_venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="tipo_comp" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero_comp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PUNTO_DE_VENTA_id_punto_venta" Type="Int32" Nullable="false" />
+          <Property Name="CLIENTE_id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO_id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="LINEA_DE_VENTAS_id_linea_ventas" Type="Int32" Nullable="false" />
+          <Property Name="LOGISTICA_id_logistica" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cliente" Relationship="Self.fk_VENTAS_CLIENTE1" FromRole="ventas" ToRole="cliente" />
+          <NavigationProperty Name="linea_de_ventas" Relationship="Self.fk_VENTAS_LINEA_DE_VENTAS1" FromRole="ventas" ToRole="linea_de_ventas" />
+          <NavigationProperty Name="logistica" Relationship="Self.fk_VENTAS_LOGISTICA1" FromRole="ventas" ToRole="logistica" />
+          <NavigationProperty Name="pago" Relationship="Self.fk_PAGO_VENTAS1" FromRole="ventas" ToRole="pago" />
+          <NavigationProperty Name="punto_de_venta" Relationship="Self.fk_VENTAS_PUNTO_DE_VENTA1" FromRole="ventas" ToRole="punto_de_venta" />
+          <NavigationProperty Name="usuario" Relationship="Self.fk_VENTAS_USUARIO1" FromRole="ventas" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="linea_de_liquidacion">
+          <Key>
+            <PropertyRef Name="cantidad_concepto" />
+            <PropertyRef Name="importe_concepto" />
+            <PropertyRef Name="LIQUIDACION_id_liquidacion" />
+            <PropertyRef Name="CONCEPTO_id_concepto" />
+          </Key>
+          <Property Name="cantidad_concepto" Type="Double" Nullable="false" />
+          <Property Name="importe_concepto" Type="Double" Nullable="false" />
+          <Property Name="LIQUIDACION_id_liquidacion" Type="Int32" Nullable="false" />
+          <Property Name="CONCEPTO_id_concepto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="concepto" Relationship="Self.fk_LINEA_DE_LIQUIDACION_CONCEPTO1" FromRole="linea_de_liquidacion" ToRole="concepto" />
+          <NavigationProperty Name="liquidacion" Relationship="Self.fk_LINEA_DE_LIQUIDACION_LIQUIDACION1" FromRole="linea_de_liquidacion" ToRole="liquidacion" />
+        </EntityType>
+        <Association Name="fk_ARTICULO_has_DEPOSITO_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="stock_deposito" Type="Self.stock_deposito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="stock_deposito">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ARTICULO_RUBRO1">
+          <End Role="rubro" Type="Self.rubro" Multiplicity="1" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rubro">
+              <PropertyRef Name="id_rubro" />
+            </Principal>
+            <Dependent Role="articulo">
+              <PropertyRef Name="RUBRO_id_rubro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA_DE_COMPRA_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="linea_de_compra" Type="Self.linea_de_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="linea_de_compra">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA_DE_VENTAS_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="linea_de_ventas" Type="Self.linea_de_ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="linea_de_ventas">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TANQUE_ARTICULO1">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="tanque" Type="Self.tanque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="id_articulo" />
+            </Principal>
+            <Dependent Role="tanque">
+              <PropertyRef Name="ARTICULO_id_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ASISTENCIA_EMPLEADO1">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="asistencia" Type="Self.asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="asistencia">
+              <PropertyRef Name="EMPLEADO_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_CAMION1">
+          <End Role="camion" Type="Self.camion" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="camion">
+              <PropertyRef Name="id_Camion" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="CAMION_id_Camion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EMPLEADO_CATEGORIA1">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="CATEGORIA_id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTE_CONDICION_DE_IVA1">
+          <End Role="condicion_de_iva" Type="Self.condicion_de_iva" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condicion_de_iva">
+              <PropertyRef Name="id_condicion_iva" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="CONDICION_DE_IVA_id_condicion_iva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CLIENTE_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_CLIENTE1">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="CLIENTE_id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_COMPRA_PROVEEDOR1">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="PROVEEDOR_id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_COMPRA_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="compra" Type="Self.compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="compra">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA_DE_COMPRA_COMPRA1">
+          <End Role="compra" Type="Self.compra" Multiplicity="1" />
+          <End Role="linea_de_compra" Type="Self.linea_de_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="compra">
+              <PropertyRef Name="id_compra" />
+            </Principal>
+            <Dependent Role="linea_de_compra">
+              <PropertyRef Name="COMPRA_id_compra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA_DE_LIQUIDACION_CONCEPTO1">
+          <End Role="concepto" Type="Self.concepto" Multiplicity="1" />
+          <End Role="linea_de_liquidacion" Type="Self.linea_de_liquidacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="concepto">
+              <PropertyRef Name="id_concepto" />
+            </Principal>
+            <Dependent Role="linea_de_liquidacion">
+              <PropertyRef Name="CONCEPTO_id_concepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PROVEEDOR_CONDICION_DE_IVA1">
+          <End Role="condicion_de_iva" Type="Self.condicion_de_iva" Multiplicity="1" />
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condicion_de_iva">
+              <PropertyRef Name="id_condicion_iva" />
+            </Principal>
+            <Dependent Role="proveedor">
+              <PropertyRef Name="CONDICION_DE_IVA_id_condicion_iva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ARTICULO_has_DEPOSITO_DEPOSITO1">
+          <End Role="deposito" Type="Self.deposito" Multiplicity="1" />
+          <End Role="stock_deposito" Type="Self.stock_deposito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deposito">
+              <PropertyRef Name="id_deposito" />
+            </Principal>
+            <Dependent Role="stock_deposito">
+              <PropertyRef Name="DEPOSITO_id_deposito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Empleado_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Empleado_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="empleado">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_GRUPO_FAMILIAR_Empleado">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="grupo_familiar" Type="Self.grupo_familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="grupo_familiar">
+              <PropertyRef Name="Empleado_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LIQUIDACION_EMPLEADO1">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="liquidacion" Type="Self.liquidacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="liquidacion">
+              <PropertyRef Name="EMPLEADO_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_EMPLEADO1">
+          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="EMPLEADO_id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HISTORIAL_ACCESO_USUARIOS_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="historial_acceso_usuarios" Type="Self.historial_acceso_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="historial_acceso_usuarios">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_LINEA_DE_VENTAS1">
+          <End Role="linea_de_ventas" Type="Self.linea_de_ventas" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="linea_de_ventas">
+              <PropertyRef Name="id_linea_ventas" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="LINEA_DE_VENTAS_id_linea_ventas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LINEA_DE_LIQUIDACION_LIQUIDACION1">
+          <End Role="liquidacion" Type="Self.liquidacion" Multiplicity="1" />
+          <End Role="linea_de_liquidacion" Type="Self.linea_de_liquidacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="liquidacion">
+              <PropertyRef Name="id_liquidacion" />
+            </Principal>
+            <Dependent Role="linea_de_liquidacion">
+              <PropertyRef Name="LIQUIDACION_id_liquidacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOCALIDAD_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="localidad" Type="Self.localidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="localidad">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UBICACION_LOCALIDAD1">
+          <End Role="localidad" Type="Self.localidad" Multiplicity="1" />
+          <End Role="ubicacion" Type="Self.ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="localidad">
+              <PropertyRef Name="id_localidad" />
+            </Principal>
+            <Dependent Role="ubicacion">
+              <PropertyRef Name="LOCALIDAD_id_localidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LOGISTICA_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="logistica" Type="Self.logistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="logistica">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_LOGISTICA1">
+          <End Role="logistica" Type="Self.logistica" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="logistica">
+              <PropertyRef Name="id_logistica" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="LOGISTICA_id_logistica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PAGO_VENTAS1">
+          <End Role="ventas" Type="Self.ventas" Multiplicity="1" />
+          <End Role="pago" Type="Self.pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ventas">
+              <PropertyRef Name="id_venta" />
+            </Principal>
+            <Dependent Role="pago">
+              <PropertyRef Name="VENTAS_id_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PROVEEDOR_PROVINCIA1">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="proveedor">
+              <PropertyRef Name="PROVINCIA_id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_PUNTO_DE_VENTA1">
+          <End Role="punto_de_venta" Type="Self.punto_de_venta" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="punto_de_venta">
+              <PropertyRef Name="id_punto_venta" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="PUNTO_DE_VENTA_id_punto_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VENTAS_USUARIO1">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="USUARIO_id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_has_recordatorio">
+          <End Role="recordatorio" Type="Self.recordatorio" Multiplicity="*" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="eebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="articulo" EntityType="Self.articulo" />
+          <EntitySet Name="asistencia" EntityType="Self.asistencia" />
+          <EntitySet Name="camion" EntityType="Self.camion" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" />
+          <EntitySet Name="compra" EntityType="Self.compra" />
+          <EntitySet Name="concepto" EntityType="Self.concepto" />
+          <EntitySet Name="condicion_de_iva" EntityType="Self.condicion_de_iva" />
+          <EntitySet Name="deposito" EntityType="Self.deposito" />
+          <EntitySet Name="empleado" EntityType="Self.empleado" />
+          <EntitySet Name="grupo_familiar" EntityType="Self.grupo_familiar" />
+          <EntitySet Name="historial_acceso_usuarios" EntityType="Self.historial_acceso_usuarios" />
+          <EntitySet Name="linea_de_compra" EntityType="Self.linea_de_compra" />
+          <EntitySet Name="linea_de_ventas" EntityType="Self.linea_de_ventas" />
+          <EntitySet Name="liquidacion" EntityType="Self.liquidacion" />
+          <EntitySet Name="localidad" EntityType="Self.localidad" />
+          <EntitySet Name="logistica" EntityType="Self.logistica" />
+          <EntitySet Name="pago" EntityType="Self.pago" />
+          <EntitySet Name="proveedor" EntityType="Self.proveedor" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" />
+          <EntitySet Name="punto_de_venta" EntityType="Self.punto_de_venta" />
+          <EntitySet Name="recordatorio" EntityType="Self.recordatorio" />
+          <EntitySet Name="rubro" EntityType="Self.rubro" />
+          <EntitySet Name="stock_deposito" EntityType="Self.stock_deposito" />
+          <EntitySet Name="tanque" EntityType="Self.tanque" />
+          <EntitySet Name="ubicacion" EntityType="Self.ubicacion" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="ventas" EntityType="Self.ventas" />
+          <EntitySet Name="linea_de_liquidacion" EntityType="Self.linea_de_liquidacion" />
+          <AssociationSet Name="fk_ARTICULO_has_DEPOSITO_ARTICULO1" Association="Self.fk_ARTICULO_has_DEPOSITO_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="stock_deposito" EntitySet="stock_deposito" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ARTICULO_RUBRO1" Association="Self.fk_ARTICULO_RUBRO1">
+            <End Role="rubro" EntitySet="rubro" />
+            <End Role="articulo" EntitySet="articulo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA_DE_COMPRA_ARTICULO1" Association="Self.fk_LINEA_DE_COMPRA_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="linea_de_compra" EntitySet="linea_de_compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA_DE_VENTAS_ARTICULO1" Association="Self.fk_LINEA_DE_VENTAS_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="linea_de_ventas" EntitySet="linea_de_ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TANQUE_ARTICULO1" Association="Self.fk_TANQUE_ARTICULO1">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="tanque" EntitySet="tanque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ASISTENCIA_EMPLEADO1" Association="Self.fk_ASISTENCIA_EMPLEADO1">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="asistencia" EntitySet="asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_CAMION1" Association="Self.fk_LOGISTICA_CAMION1">
+            <End Role="camion" EntitySet="camion" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EMPLEADO_CATEGORIA1" Association="Self.fk_EMPLEADO_CATEGORIA1">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTE_CONDICION_DE_IVA1" Association="Self.fk_CLIENTE_CONDICION_DE_IVA1">
+            <End Role="condicion_de_iva" EntitySet="condicion_de_iva" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CLIENTE_PROVINCIA1" Association="Self.fk_CLIENTE_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_CLIENTE1" Association="Self.fk_VENTAS_CLIENTE1">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_COMPRA_PROVEEDOR1" Association="Self.fk_COMPRA_PROVEEDOR1">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_COMPRA_USUARIO1" Association="Self.fk_COMPRA_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="compra" EntitySet="compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA_DE_COMPRA_COMPRA1" Association="Self.fk_LINEA_DE_COMPRA_COMPRA1">
+            <End Role="compra" EntitySet="compra" />
+            <End Role="linea_de_compra" EntitySet="linea_de_compra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA_DE_LIQUIDACION_CONCEPTO1" Association="Self.fk_LINEA_DE_LIQUIDACION_CONCEPTO1">
+            <End Role="concepto" EntitySet="concepto" />
+            <End Role="linea_de_liquidacion" EntitySet="linea_de_liquidacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PROVEEDOR_CONDICION_DE_IVA1" Association="Self.fk_PROVEEDOR_CONDICION_DE_IVA1">
+            <End Role="condicion_de_iva" EntitySet="condicion_de_iva" />
+            <End Role="proveedor" EntitySet="proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ARTICULO_has_DEPOSITO_DEPOSITO1" Association="Self.fk_ARTICULO_has_DEPOSITO_DEPOSITO1">
+            <End Role="deposito" EntitySet="deposito" />
+            <End Role="stock_deposito" EntitySet="stock_deposito" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Empleado_PROVINCIA1" Association="Self.fk_Empleado_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Empleado_USUARIO1" Association="Self.fk_Empleado_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="empleado" EntitySet="empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_GRUPO_FAMILIAR_Empleado" Association="Self.fk_GRUPO_FAMILIAR_Empleado">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="grupo_familiar" EntitySet="grupo_familiar" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LIQUIDACION_EMPLEADO1" Association="Self.fk_LIQUIDACION_EMPLEADO1">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="liquidacion" EntitySet="liquidacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_EMPLEADO1" Association="Self.fk_LOGISTICA_EMPLEADO1">
+            <End Role="empleado" EntitySet="empleado" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HISTORIAL_ACCESO_USUARIOS_USUARIO1" Association="Self.fk_HISTORIAL_ACCESO_USUARIOS_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="historial_acceso_usuarios" EntitySet="historial_acceso_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_LINEA_DE_VENTAS1" Association="Self.fk_VENTAS_LINEA_DE_VENTAS1">
+            <End Role="linea_de_ventas" EntitySet="linea_de_ventas" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LINEA_DE_LIQUIDACION_LIQUIDACION1" Association="Self.fk_LINEA_DE_LIQUIDACION_LIQUIDACION1">
+            <End Role="liquidacion" EntitySet="liquidacion" />
+            <End Role="linea_de_liquidacion" EntitySet="linea_de_liquidacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOCALIDAD_PROVINCIA1" Association="Self.fk_LOCALIDAD_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="localidad" EntitySet="localidad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UBICACION_LOCALIDAD1" Association="Self.fk_UBICACION_LOCALIDAD1">
+            <End Role="localidad" EntitySet="localidad" />
+            <End Role="ubicacion" EntitySet="ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_PROVINCIA1" Association="Self.fk_LOGISTICA_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LOGISTICA_USUARIO1" Association="Self.fk_LOGISTICA_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="logistica" EntitySet="logistica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_LOGISTICA1" Association="Self.fk_VENTAS_LOGISTICA1">
+            <End Role="logistica" EntitySet="logistica" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PAGO_VENTAS1" Association="Self.fk_PAGO_VENTAS1">
+            <End Role="ventas" EntitySet="ventas" />
+            <End Role="pago" EntitySet="pago" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PROVEEDOR_PROVINCIA1" Association="Self.fk_PROVEEDOR_PROVINCIA1">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="proveedor" EntitySet="proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_PUNTO_DE_VENTA1" Association="Self.fk_VENTAS_PUNTO_DE_VENTA1">
+            <End Role="punto_de_venta" EntitySet="punto_de_venta" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VENTAS_USUARIO1" Association="Self.fk_VENTAS_USUARIO1">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_has_recordatorio" Association="Self.usuario_has_recordatorio">
+            <End Role="recordatorio" EntitySet="recordatorio" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eebModelStoreContainer" CdmEntityContainer="eebEntities">
+          <EntitySetMapping Name="articulo">
+            <EntityTypeMapping TypeName="eebModel.articulo">
+              <MappingFragment StoreEntitySet="articulo">
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+                <ScalarProperty Name="codigo_barra" ColumnName="codigo_barra" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio_unitario" ColumnName="precio_unitario" />
+                <ScalarProperty Name="precio_venta_menor" ColumnName="precio_venta_menor" />
+                <ScalarProperty Name="precio_venta_mayor" ColumnName="precio_venta_mayor" />
+                <ScalarProperty Name="itc" ColumnName="itc" />
+                <ScalarProperty Name="th_ti" ColumnName="th_ti" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="utilidad" ColumnName="utilidad" />
+                <ScalarProperty Name="stock_critico_gral" ColumnName="stock_critico_gral" />
+                <ScalarProperty Name="stock_actual_gral" ColumnName="stock_actual_gral" />
+                <ScalarProperty Name="fecha_stock_actual" ColumnName="fecha_stock_actual" />
+                <ScalarProperty Name="fecha_registrado" ColumnName="fecha_registrado" />
+                <ScalarProperty Name="RUBRO_id_rubro" ColumnName="RUBRO_id_rubro" />
+                <ScalarProperty Name="granel" ColumnName="granel" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="asistencia">
+            <EntityTypeMapping TypeName="eebModel.asistencia">
+              <MappingFragment StoreEntitySet="asistencia">
+                <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora_entrada" ColumnName="hora_entrada" />
+                <ScalarProperty Name="hora_salida" ColumnName="hora_salida" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="EMPLEADO_id_empleado" ColumnName="EMPLEADO_id_empleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="camion">
+            <EntityTypeMapping TypeName="eebModel.camion">
+              <MappingFragment StoreEntitySet="camion">
+                <ScalarProperty Name="id_Camion" ColumnName="id_Camion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+                <ScalarProperty Name="cantidad_cisternas" ColumnName="cantidad_cisternas" />
+                <ScalarProperty Name="patente" ColumnName="patente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="eebModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="sindicato" ColumnName="sindicato" />
+                <ScalarProperty Name="convenio_laboral" ColumnName="convenio_laboral" />
+                <ScalarProperty Name="sueldo_basico" ColumnName="sueldo_basico" />
+                <ScalarProperty Name="tipo_sueldo" ColumnName="tipo_sueldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="eebModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="nombre_contacto" ColumnName="nombre_contacto" />
+                <ScalarProperty Name="cuit" ColumnName="cuit" />
+                <ScalarProperty Name="telefono_fijo" ColumnName="telefono_fijo" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_registrado" ColumnName="fecha_registrado" />
+                <ScalarProperty Name="CONDICION_DE_IVA_id_condicion_iva" ColumnName="CONDICION DE IVA_id_condicion_iva" />
+                <ScalarProperty Name="PROVINCIA_id_provincia" ColumnName="PROVINCIA_id_provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="compra">
+            <EntityTypeMapping TypeName="eebModel.compra">
+              <MappingFragment StoreEntitySet="compra">
+                <ScalarProperty Name="id_compra" ColumnName="id_compra" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="precio_unitario" ColumnName="precio_unitario" />
+                <ScalarProperty Name="itcCompra" ColumnName="itcCompra" />
+                <ScalarProperty Name="USUARIO_id_usuario" ColumnName="USUARIO_id_usuario" />
+                <ScalarProperty Name="PROVEEDOR_id_proveedor" ColumnName="PROVEEDOR_id_proveedor" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="concepto">
+            <EntityTypeMapping TypeName="eebModel.concepto">
+              <MappingFragment StoreEntitySet="concepto">
+                <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+                <ScalarProperty Name="tipo_concepto" ColumnName="tipo_concepto" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="condicion_de_iva">
+            <EntityTypeMapping TypeName="eebModel.condicion_de_iva">
+              <MappingFragment StoreEntitySet="condicion de iva">
+                <ScalarProperty Name="id_condicion_iva" ColumnName="id_condicion_iva" />
+                <ScalarProperty Name="descripción" ColumnName="descripción" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deposito">
+            <EntityTypeMapping TypeName="eebModel.deposito">
+              <MappingFragment StoreEntitySet="deposito">
+                <ScalarProperty Name="id_deposito" ColumnName="id_deposito" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empleado">
+            <EntityTypeMapping TypeName="eebModel.empleado">
+              <MappingFragment StoreEntitySet="empleado">
+                <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+                <ScalarProperty Name="legajo" ColumnName="legajo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="cuil" ColumnName="cuil" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="telefono_fijo" ColumnName="telefono_fijo" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="fecha_egreso" ColumnName="fecha_egreso" />
+                <ScalarProperty Name="fecha_registrado" ColumnName="fecha_registrado" />
+                <ScalarProperty Name="obra_social" ColumnName="obra_social" />
+                <ScalarProperty Name="USUARIO_id_usuario" ColumnName="USUARIO_id_usuario" />
+                <ScalarProperty Name="PROVINCIA_id_provincia" ColumnName="PROVINCIA_id_provincia" />
+                <ScalarProperty Name="CATEGORIA_id_categoria" ColumnName="CATEGORIA_id_categoria" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupo_familiar">
+            <EntityTypeMapping TypeName="eebModel.grupo_familiar">
+              <MappingFragment StoreEntitySet="grupo-familiar">
+                <ScalarProperty Name="id_grupo_familiar" ColumnName="id_grupo_familiar" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="parentesco" ColumnName="parentesco" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="fecha_registrado" ColumnName="fecha_registrado" />
+                <ScalarProperty Name="Empleado_id_empleado" ColumnName="Empleado_id_empleado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historial_acceso_usuarios">
+            <EntityTypeMapping TypeName="eebModel.historial_acceso_usuarios">
+              <MappingFragment StoreEntitySet="historial-acceso-usuarios">
+                <ScalarProperty Name="id_historial_acceso_usario" ColumnName="id_historial_acceso_usario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora_ingreso" ColumnName="hora_ingreso" />
+                <ScalarProperty Name="hora_salida" ColumnName="hora_salida" />
+                <ScalarProperty Name="USUARIO_id_usuario" ColumnName="USUARIO_id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="linea_de_compra">
+            <EntityTypeMapping TypeName="eebModel.linea_de_compra">
+              <MappingFragment StoreEntitySet="linea de compra">
+                <ScalarProperty Name="id_linea_caja" ColumnName="id_linea_caja" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_compra" ColumnName="precio_compra" />
+                <ScalarProperty Name="itcCompra" ColumnName="itcCompra" />
+                <ScalarProperty Name="COMPRA_id_compra" ColumnName="COMPRA_id_compra" />
+                <ScalarProperty Name="ARTICULO_id_articulo" ColumnName="ARTICULO_id_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="linea_de_ventas">
+            <EntityTypeMapping TypeName="eebModel.linea_de_ventas">
+              <MappingFragment StoreEntitySet="linea de ventas">
+                <ScalarProperty Name="id_linea_ventas" ColumnName="id_linea_ventas" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio_vta" ColumnName="precio_vta" />
+                <ScalarProperty Name="itcVenta" ColumnName="itcVenta" />
+                <ScalarProperty Name="th_tiVenta" ColumnName="th_tiVenta" />
+                <ScalarProperty Name="ARTICULO_id_articulo" ColumnName="ARTICULO_id_articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="liquidacion">
+            <EntityTypeMapping TypeName="eebModel.liquidacion">
+              <MappingFragment StoreEntitySet="liquidacion">
+                <ScalarProperty Name="id_liquidacion" ColumnName="id_liquidacion" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="fecha_liquidación" ColumnName="fecha_liquidación" />
+                <ScalarProperty Name="fecha_pago" ColumnName="fecha_pago" />
+                <ScalarProperty Name="lugar_de_pago" ColumnName="lugar_de_pago" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="EMPLEADO_id_empleado" ColumnName="EMPLEADO_id_empleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localidad">
+            <EntityTypeMapping TypeName="eebModel.localidad">
+              <MappingFragment StoreEntitySet="localidad">
+                <ScalarProperty Name="id_localidad" ColumnName="id_localidad" />
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="PROVINCIA_id_provincia" ColumnName="PROVINCIA_id_provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logistica">
+            <EntityTypeMapping TypeName="eebModel.logistica">
+              <MappingFragment StoreEntitySet="logistica">
+                <ScalarProperty Name="id_logistica" ColumnName="id_logistica" />
+                <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="CAMION_id_Camion" ColumnName="CAMION_id_Camion" />
+                <ScalarProperty Name="EMPLEADO_id_empleado" ColumnName="EMPLEADO_id_empleado" />
+                <ScalarProperty Name="USUARIO_id_usuario" ColumnName="USUARIO_id_usuario" />
+                <ScalarProperty Name="PROVINCIA_id_provincia" ColumnName="PROVINCIA_id_provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pago">
+            <EntityTypeMapping TypeName="eebModel.pago">
+              <MappingFragment StoreEntitySet="pago">
+                <ScalarProperty Name="id_pago" ColumnName="id_pago" />
+                <ScalarProperty Name="nro_comprobante" ColumnName="nro_comprobante" />
+                <ScalarProperty Name="fecha_pago" ColumnName="fecha_pago" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="VENTAS_id_venta" ColumnName="VENTAS_id_venta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedor">
+            <EntityTypeMapping TypeName="eebModel.proveedor">
+              <MappingFragment StoreEntitySet="proveedor">
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="cuit" ColumnName="cuit" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="nombre_contacto" ColumnName="nombre_contacto" />
+                <ScalarProperty Name="telefono_fijo" ColumnName="telefono_fijo" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="CONDICION_DE_IVA_id_condicion_iva" ColumnName="CONDICION DE IVA_id_condicion_iva" />
+                <ScalarProperty Name="PROVINCIA_id_provincia" ColumnName="PROVINCIA_id_provincia" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia">
+            <EntityTypeMapping TypeName="eebModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="punto_de_venta">
+            <EntityTypeMapping TypeName="eebModel.punto_de_venta">
+              <MappingFragment StoreEntitySet="punto de venta">
+                <ScalarProperty Name="id_punto_venta" ColumnName="id_punto_venta" />
+                <ScalarProperty Name="nro_PtoVta" ColumnName="nro_PtoVta" />
+                <ScalarProperty Name="maquina" ColumnName="maquina" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recordatorio">
+            <EntityTypeMapping TypeName="eebModel.recordatorio">
+              <MappingFragment StoreEntitySet="recordatorio">
+                <ScalarProperty Name="id_funcion" ColumnName="id_funcion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rubro">
+            <EntityTypeMapping TypeName="eebModel.rubro">
+              <MappingFragment StoreEntitySet="rubro">
+                <ScalarProperty Name="id_rubro" ColumnName="id_rubro" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock_deposito">
+            <EntityTypeMapping TypeName="eebModel.stock_deposito">
+              <MappingFragment StoreEntitySet="stock_deposito">
+                <ScalarProperty Name="ARTICULO_id_articulo" ColumnName="ARTICULO_id_articulo" />
+                <ScalarProperty Name="DEPOSITO_id_deposito" ColumnName="DEPOSITO_id_deposito" />
+                <ScalarProperty Name="stock_actual" ColumnName="stock_actual" />
+                <ScalarProperty Name="fecha_stock_actual" ColumnName="fecha_stock_actual" />
+                <ScalarProperty Name="stock_critico" ColumnName="stock_critico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tanque">
+            <EntityTypeMapping TypeName="eebModel.tanque">
+              <MappingFragment StoreEntitySet="tanque">
+                <ScalarProperty Name="id_tanque" ColumnName="id_tanque" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+                <ScalarProperty Name="stock_critico" ColumnName="stock_critico" />
+                <ScalarProperty Name="stock_actual" ColumnName="stock_actual" />
+                <ScalarProperty Name="fecha_stock_actual" ColumnName="fecha_stock_actual" />
+                <ScalarProperty Name="stock_medicion" ColumnName="stock_medicion" />
+                <ScalarProperty Name="fecha_medicion" ColumnName="fecha_medicion" />
+                <ScalarProperty Name="ARTICULO_id_articulo" ColumnName="ARTICULO_id_articulo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ubicacion">
+            <EntityTypeMapping TypeName="eebModel.ubicacion">
+              <MappingFragment StoreEntitySet="ubicacion">
+                <ScalarProperty Name="id_ubicacion" ColumnName="id_ubicacion" />
+                <ScalarProperty Name="casa" ColumnName="casa" />
+                <ScalarProperty Name="manzana" ColumnName="manzana" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="barrio" ColumnName="barrio" />
+                <ScalarProperty Name="sector" ColumnName="sector" />
+                <ScalarProperty Name="zona" ColumnName="zona" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="piso" ColumnName="piso" />
+                <ScalarProperty Name="LOCALIDAD_id_localidad" ColumnName="LOCALIDAD_id_localidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="eebModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_usario" ColumnName="nombre_usario" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="perfil" ColumnName="perfil" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ventas">
+            <EntityTypeMapping TypeName="eebModel.ventas">
+              <MappingFragment StoreEntitySet="ventas">
+                <ScalarProperty Name="id_venta" ColumnName="id_venta" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="tipo_comp" ColumnName="tipo_comp" />
+                <ScalarProperty Name="numero_comp" ColumnName="numero_comp" />
+                <ScalarProperty Name="PUNTO_DE_VENTA_id_punto_venta" ColumnName="PUNTO DE VENTA_id_punto_venta" />
+                <ScalarProperty Name="CLIENTE_id_cliente" ColumnName="CLIENTE_id_cliente" />
+                <ScalarProperty Name="USUARIO_id_usuario" ColumnName="USUARIO_id_usuario" />
+                <ScalarProperty Name="LINEA_DE_VENTAS_id_linea_ventas" ColumnName="LINEA DE VENTAS_id_linea_ventas" />
+                <ScalarProperty Name="LOGISTICA_id_logistica" ColumnName="LOGISTICA_id_logistica" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="linea_de_liquidacion">
+            <EntityTypeMapping TypeName="eebModel.linea_de_liquidacion">
+              <MappingFragment StoreEntitySet="linea de liquidacion">
+                <ScalarProperty Name="cantidad_concepto" ColumnName="cantidad_concepto" />
+                <ScalarProperty Name="importe_concepto" ColumnName="importe_concepto" />
+                <ScalarProperty Name="LIQUIDACION_id_liquidacion" ColumnName="LIQUIDACION_id_liquidacion" />
+                <ScalarProperty Name="CONCEPTO_id_concepto" ColumnName="CONCEPTO_id_concepto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="usuario_has_recordatorio" TypeName="eebModel.usuario_has_recordatorio" StoreEntitySet="usuario_has_recordatorio">
+            <EndProperty Name="recordatorio">
+              <ScalarProperty Name="id_funcion" ColumnName="RECORDATORIO_id_funcion" />
+            </EndProperty>
+            <EndProperty Name="usuario">
+              <ScalarProperty Name="id_usuario" ColumnName="USUARIO_id_usuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
