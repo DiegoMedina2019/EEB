@@ -78,6 +78,9 @@
     <EmbeddedResource Include="Vistas\Login\InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Menu Principal\MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Menu Principal\Sesion\CambioContraseña.resx">
       <DependentUpon>CambioContraseña.cs</DependentUpon>
     </EmbeddedResource>
