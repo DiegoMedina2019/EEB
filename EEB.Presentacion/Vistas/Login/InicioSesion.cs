@@ -54,6 +54,8 @@ namespace EEB.Presentacion.Vistas
                 switch(mensaje)
                 {
                     case "EXISTE":
+                        Usuario datos = Usuario.Instance();
+                        datos._username = txtUsuario.Text;
                         this.Hide();
                         this.ShowInTaskbar = false;
                         menuPrincipal.ShowDialog();
@@ -81,7 +83,7 @@ namespace EEB.Presentacion.Vistas
         {
             if (!string.IsNullOrWhiteSpace(txtUsuario.Text) || !string.IsNullOrWhiteSpace(txtContraseña.Text))
             {
-                DialogResult resultado = MessageBox.Show("¿Esta seguro de resetear", "", MessageBoxButtons.YesNo);
+                DialogResult resultado = MessageBox.Show("¿ESTA SEGURO DE RESETEAR?", "", MessageBoxButtons.YesNo);
                 switch(resultado)
                 {
                     case DialogResult.Yes:
@@ -93,7 +95,7 @@ namespace EEB.Presentacion.Vistas
             }
             else
             {
-                MessageBox.Show("Debe por lo menos completar un campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("DEBE POR LO MENOS COMPLETAR UN CAMPO", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

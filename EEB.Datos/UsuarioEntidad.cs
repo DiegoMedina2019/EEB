@@ -8,11 +8,12 @@ namespace EEB.Datos
 {
     public class UsuarioEntidad
     {
+        private string mensaje;
+
         public string ExisteUsuario(string username,string password)
         {
             try
             {
-                string mensaje = string.Empty;
                 using (eebEntities eeb = new eebEntities())
                 {
                     var existe_usuario = eeb.usuario.Any(u => u.nombre_usario == username);
@@ -43,6 +44,75 @@ namespace EEB.Datos
                 var error = ex.ToString();
                 return "NO ESTA CONECTADO A LA BASE DE DATOS";
             }
+        }
+
+        public string CambioContraseña(int id_usuario,string estado,string username,string contraseña_anterior,string nueva_contraseña)
+        {
+            try
+            {
+               using(eebEntities eeb = new eebEntities())
+               {
+                    usuario user = eeb.usuario.FirstOrDefault(u => u.nombre_usario == username && u.contraseña == contraseña_anterior);
+                    if (user != null)
+                    {
+                        user.id_usuario = id_usuario;
+                        user.nombre_usario = username;
+                        user.estado = estado;
+                        user.contraseña = nueva_contraseña;
+                        eeb.SaveChanges();
+                        mensaje = "CONTRASEÑA FUE CAMBIADA EXITOSAMENTE";
+                    }
+                    else
+                    {
+                        mensaje = "NO SE PUDO CAMBIAR LA CONTRASEÑA";
+                    }
+                }
+                return mensaje; 
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public int ObtenerIdUsuario(string username)
+        {
+            int userID = 0;
+            using (eebEntities eeb = new eebEntities())
+            {
+                var consulta_usuario = from user in eeb.usuario
+                                       where user.nombre_usario == username
+                                       select new
+                                       {
+                                           _iduser = user.id_usuario
+                                       };
+                foreach (var u in consulta_usuario)
+                {
+                    userID = u._iduser;
+                }
+            }
+            return userID;
+        }
+
+        public string ObtenerEstadoUsuario(string username)
+        {
+            string userstate=string.Empty;
+            using (eebEntities eeb = new eebEntities())
+            {
+                var consulta = eeb.usuario.Where(u => u.nombre_usario == username).Select(u => u.estado);
+                mensaje = string.Join("", consulta);
+            }
+            return mensaje;
+        }
+
+        public string ObternerContraseñaActual(string username)
+        {
+            using (eebEntities eeb = new eebEntities())
+            {
+                var consulta = eeb.usuario.Where(u => u.nombre_usario == username).Select(u => u.contraseña);
+                mensaje = string.Join("", consulta);
+            }
+            return mensaje;
         }
     }
 }
