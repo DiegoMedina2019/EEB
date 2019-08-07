@@ -74,6 +74,7 @@
             this.txtNuevaContraseña.Font = new System.Drawing.Font("Arial Narrow", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNuevaContraseña.Location = new System.Drawing.Point(18, 130);
             this.txtNuevaContraseña.Name = "txtNuevaContraseña";
+            this.txtNuevaContraseña.PasswordChar = '*';
             this.txtNuevaContraseña.Size = new System.Drawing.Size(369, 32);
             this.txtNuevaContraseña.TabIndex = 4;
             // 
@@ -129,7 +130,7 @@
             this.MaximizeBox = false;
             this.Name = "CambioContraseña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CAMBIO CONTRASEÑA";
+            this.Text = "CAMBIO DE CONTRASEÑA";
             this.ResumeLayout(false);
             this.PerformLayout();
 

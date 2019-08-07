@@ -111,6 +111,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.lblcontraseña);
             this.Controls.Add(this.lblusuario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InicioSesion";

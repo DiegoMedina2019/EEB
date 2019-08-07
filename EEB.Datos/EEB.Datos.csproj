@@ -124,6 +124,7 @@
     <Compile Include="proveedor.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProveedorEntidad.cs" />
     <Compile Include="provincia.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
