@@ -30,33 +30,37 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCambioContraseña = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCambioUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProveedor = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMenu,
             this.mnuSesion,
             this.mnuSalir});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(284, 56);
+            this.menuStrip1.Size = new System.Drawing.Size(370, 56);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // mnuSalir
+            // mnuMenu
             // 
-            this.mnuSalir.Font = new System.Drawing.Font("Arial Narrow", 14F, System.Drawing.FontStyle.Bold);
-            this.mnuSalir.Image = ((System.Drawing.Image)(resources.GetObject("mnuSalir.Image")));
-            this.mnuSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.Size = new System.Drawing.Size(116, 52);
-            this.mnuSalir.Text = "SALIR";
-            this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
+            this.mnuMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuProveedor});
+            this.mnuMenu.Font = new System.Drawing.Font("Arial Narrow", 14F, System.Drawing.FontStyle.Bold);
+            this.mnuMenu.Image = ((System.Drawing.Image)(resources.GetObject("mnuMenu.Image")));
+            this.mnuMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mnuMenu.Name = "mnuMenu";
+            this.mnuMenu.Size = new System.Drawing.Size(115, 52);
+            this.mnuMenu.Text = "MENU";
             // 
             // mnuSesion
             // 
@@ -89,12 +93,31 @@
             this.mnuCambioUsuario.Text = "CAMBIO DE USAURIO";
             this.mnuCambioUsuario.Click += new System.EventHandler(this.mnuCambioUsuario_Click);
             // 
+            // mnuSalir
+            // 
+            this.mnuSalir.Font = new System.Drawing.Font("Arial Narrow", 14F, System.Drawing.FontStyle.Bold);
+            this.mnuSalir.Image = ((System.Drawing.Image)(resources.GetObject("mnuSalir.Image")));
+            this.mnuSalir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mnuSalir.Name = "mnuSalir";
+            this.mnuSalir.Size = new System.Drawing.Size(116, 52);
+            this.mnuSalir.Text = "SALIR";
+            this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
+            // 
+            // mnuProveedor
+            // 
+            this.mnuProveedor.Image = ((System.Drawing.Image)(resources.GetObject("mnuProveedor.Image")));
+            this.mnuProveedor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mnuProveedor.Name = "mnuProveedor";
+            this.mnuProveedor.Size = new System.Drawing.Size(209, 54);
+            this.mnuProveedor.Text = "PROVEEDOR";
+            this.mnuProveedor.Click += new System.EventHandler(this.mnuProveedor_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(28)))), ((int)(((byte)(12)))));
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(370, 258);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -116,5 +139,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSesion;
         private System.Windows.Forms.ToolStripMenuItem mnuCambioContraseña;
         private System.Windows.Forms.ToolStripMenuItem mnuCambioUsuario;
+        private System.Windows.Forms.ToolStripMenuItem mnuMenu;
+        private System.Windows.Forms.ToolStripMenuItem mnuProveedor;
     }
 }

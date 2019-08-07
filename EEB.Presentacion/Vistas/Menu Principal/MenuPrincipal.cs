@@ -1,5 +1,4 @@
-﻿using EEB.Presentacion.Vistas.Menu_Principal.Sesion;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,17 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EEB.Presentacion.Vistas.Menu_Principal.Menu.Proveedor;
+using EEB.Presentacion.Vistas.Menu_Principal.Sesion;
 
 namespace EEB.Presentacion.Vistas.Menu_Principal
 {
     public partial class MenuPrincipal : Form
     {
         private CambioContraseña cambioContraseña;
+        private IndiceProveedor indiceProveedor;
 
         public MenuPrincipal()
         {
             InitializeComponent();
             cambioContraseña = new CambioContraseña();
+            indiceProveedor = new IndiceProveedor();
         }
 
         private void mnuSalir_Click(object sender, EventArgs e)
@@ -48,6 +51,11 @@ namespace EEB.Presentacion.Vistas.Menu_Principal
                     inicio.ShowDialog();
                     break;
             }
+        }
+
+        private void mnuProveedor_Click(object sender, EventArgs e)
+        {
+            indiceProveedor.ShowDialog();
         }
     }
 }

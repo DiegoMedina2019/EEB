@@ -46,12 +46,12 @@ namespace EEB.Datos
             }
         }
 
-        public string CambioContraseña(int id_usuario,string estado,string username,string contraseña_anterior,string nueva_contraseña)
+        public string CambioContraseña(int id_usuario, string estado, string username, string contraseña_anterior, string nueva_contraseña)
         {
             try
             {
-               using(eebEntities eeb = new eebEntities())
-               {
+                using (eebEntities eeb = new eebEntities())
+                {
                     usuario user = eeb.usuario.FirstOrDefault(u => u.nombre_usario == username && u.contraseña == contraseña_anterior);
                     if (user != null)
                     {
@@ -67,14 +67,14 @@ namespace EEB.Datos
                         mensaje = "NO SE PUDO CAMBIAR LA CONTRASEÑA";
                     }
                 }
-                return mensaje; 
+                return mensaje;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ex.ToString();
             }
         }
-
+        #region Obtener Datos Previos
         public int ObtenerIdUsuario(string username)
         {
             int userID = 0;
@@ -114,5 +114,6 @@ namespace EEB.Datos
             }
             return mensaje;
         }
+        #endregion
     }
 }

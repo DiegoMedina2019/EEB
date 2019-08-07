@@ -94,7 +94,7 @@
             this.btnResetear.Name = "btnResetear";
             this.btnResetear.Size = new System.Drawing.Size(111, 46);
             this.btnResetear.TabIndex = 5;
-            this.btnResetear.Text = "RESETEAR";
+            this.btnResetear.Text = "LIMPIAR";
             this.btnResetear.UseVisualStyleBackColor = true;
             this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
             // 
@@ -111,6 +111,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.lblcontraseña);
             this.Controls.Add(this.lblusuario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InicioSesion";
