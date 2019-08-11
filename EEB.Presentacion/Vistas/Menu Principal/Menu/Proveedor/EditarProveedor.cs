@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EEB.Dominio;
 
 namespace EEB.Presentacion.Vistas.Menu_Principal.Menu.Proveedor
 {

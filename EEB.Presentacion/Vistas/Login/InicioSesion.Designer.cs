@@ -94,7 +94,7 @@
             this.btnResetear.Name = "btnResetear";
             this.btnResetear.Size = new System.Drawing.Size(111, 46);
             this.btnResetear.TabIndex = 5;
-            this.btnResetear.Text = "RESETEAR";
+            this.btnResetear.Text = "LIMPIAR";
             this.btnResetear.UseVisualStyleBackColor = true;
             this.btnResetear.Click += new System.EventHandler(this.btnResetear_Click);
             // 
